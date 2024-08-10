@@ -12,10 +12,10 @@ test("end to end flow of adding items to cart", async({page})=>{
     await page.locator("#userEmail").fill("john.cena@gmail.com");
     await page.locator("input[id='userPassword']").fill("Johncena123!");
     await page.locator("input[type='submit']").click();
+
     await products.locator("b").first().waitFor();
    
     const count=await products.count();
-    console.log(count);
     
     for(var i=0; i < count; i++)
     {
