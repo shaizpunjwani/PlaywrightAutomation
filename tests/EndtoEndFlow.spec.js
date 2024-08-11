@@ -32,12 +32,14 @@ test("end to end flow of adding items to cart", async({page})=>{
     }
 
     await page.locator("button[routerlink*='cart']").click();
+
     await page.locator("div ul li").first().waitFor();
 
    const visible = await page.locator("h3:has-text('IPHONE 13 PRO')").isVisible();
    expect(visible).toBeTruthy();
 
    await page.locator("text=Checkout").click();
+
    await page.locator("input[placeholder*='Country']").waitFor();
    await page.locator("input[placeholder*='Country']").pressSequentially("ind");
    const dyanamic_dd=page.locator("section[class*='ta-results']");
@@ -60,6 +62,7 @@ test("end to end flow of adding items to cart", async({page})=>{
    await page.locator("div[class='field'] input[class='input txt']").fill("john");
 
    await expect(page.locator("div[class*='user__name '] label")).toHaveText("john.cena@gmail.com");
+   
    await page.locator("a[class*='submit']").click();
 
    await expect(page.locator("h1[class*='hero']")).toHaveText(" Thankyou for the order. ")

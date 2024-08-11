@@ -1,25 +1,37 @@
 const {test, expect} = require('@playwright/test');
-const { Loginpage } = require('../PageObjects/Loginpage.spec');
-const { DashboardPage } = require('../PageObjects/DashboardPage.spec');
-// import { Loginpage } from '../PageObjects/Loginpage.spec';
+const { POManager } = require('../PageObjects/POManager.spec');
+
+const Testdata = JSON.parse(JSON.stringify(require("../Utlis/Testdata.json")));
 
 
 test("end to end flow of adding items to cart", async({page})=>{
 
-
+    const pomanager= new POManager(page);
     await page.goto("https://rahulshettyacademy.com/client/");
     await page.waitForLoadState("domcontentloaded");
-    const loginpage=new Loginpage(page);
+    const loginpage=pomanager.GetLoginPage();
 
-    await loginpage.Login("john.cena@gmail.com", "Johncena123!");
+    await loginpage.Login(Testdata.email, Testdata.pwd);
 
-    page=loginpage.get_page();
+    const dashboardpage=pomanager.GetDashboardPage()
 
-    const dashboardpage=new DashboardPage(page);
-
-    await dashboardpage.Search_Add_Products("IPHONE 13 PRO");
+    await dashboardpage.Search_Add_Products(Testdata.prodname);
     await dashboardpage.Navigate_Cart();
 
+    const cartpage = pomanager.GetCartPage();
+
+    await cartpage.Check_Product_Visibility('IPHONE 13 PRO');
+    await cartpage.Navigate_CheckoutPage();
+
+    const orderinfo = pomanager.GetOrderInfoPage();
+
+    await orderinfo.EnterCountry("ind", "India");
+
+    await orderinfo.EnterInfo("123", "john", "john.cena@gmail.com");
+
+    await orderinfo.Click_Submit();
+
     
-    //await products.locator("b").first().waitFor();
+
+    
 });
