@@ -1,5 +1,13 @@
-{
-    "email": "john.cena@gmail.com",
-    "pwd": "Johncena123!",
-    "prodname": "IPHONE 13 PRO"
-}
+[
+    {
+        "email": "john.cena@gmail.com",
+        "pwd": "Johncena123!",
+        "prodname": "IPHONE 13 PRO"
+    },
+
+    {
+        "email": "john.cena@gmail.com",
+        "pwd": "Johncena123!",
+        "prodname": "ADIDAS ORIGINAL"
+    }
+]
