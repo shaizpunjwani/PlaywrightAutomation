@@ -41,7 +41,7 @@ test(`End to End flow testing of product ${data.prodname}`, async({page})=>{
 };
 
 
-customtest.only("Using playwright fixture", async({page, TestData})=>{
+customtest("Using playwright fixture", async({page, TestData})=>{
 
     const pomanager= new POManager(page);
     await page.goto("https://rahulshettyacademy.com/client/");

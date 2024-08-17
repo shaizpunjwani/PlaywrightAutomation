@@ -14,7 +14,7 @@ const {test, expect} = require('@playwright/test');
 //     await expect(page).toHaveTitle("Google");
 // })
 
-test("Sign in to website", async({page})=>{
+test("@Web Sign in to website", async({page})=>{
     const userName=page.locator("input[id='username']");
     const signIn=page.locator("#signInBtn");
 

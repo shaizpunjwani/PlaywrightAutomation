@@ -1,6 +1,7 @@
 const {test, expect} = require('@playwright/test');
 const { Console } = require('console');
 
+test.describe.configure({mode: "parallel"});
 
 test("handling dropdownd and radio buttons", async({page})=>{
 

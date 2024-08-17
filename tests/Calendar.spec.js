@@ -2,7 +2,7 @@ const {test, expect} = require('@playwright/test');
 const { count } = require('console');
 
 
-test("working with calendar", async({page})=>{
+test("@Web working with calendar", async({page})=>{
 
     const month="9";
     const date="6";
