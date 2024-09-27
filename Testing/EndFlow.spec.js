@@ -32,13 +32,22 @@ test(`End to End flow testing of product ${data.prodname}`, async({page})=>{
 
     await orderinfo.EnterInfo("123", "john", "john.cena@gmail.com");
 
+    // await page.screenshot({path: 'screenshot.png'})
+    // await page.locator("a[class*='submit']").screenshot({path: 'screenshot1.png'});
+
     await orderinfo.Click_Submit();
 
-    
 
-    
 });
 };
+
+test.only("Visual testing", async({page})=>{
+
+    await page.goto("https://www.flightaware.com/");
+    expect(await page.screenshot()).toMatchSnapshot("landing.png")
+
+
+});
 
 
 customtest("Using playwright fixture", async({page, TestData})=>{
